@@ -125,11 +125,11 @@ class Matrix {
     return true;
   }
   Matrix Inverse(){
-    if (row!=col){
+    if (row != col){
       std::cout << "Error!";
       return *this;
     }
-    Matrix<T> Mat(row, 2 * row) ;
+    Matrix<T> Mat(row, 2 * row);
     Mat = *this;
     for (int i = 0; i < row; i++) {
       Mat.M[i][row + i] = 1;
