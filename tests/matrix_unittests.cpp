@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-#include <matrix.hpp>
+#include "C:\Users\ДенАрт\source\repos\BMSTU-2019-LAB\02-lab-04-templates-matrix-avel0041\include\matrix.hpp"
 
 TEST(Matrix, Init) {
     Matrix<int> m(2, 2);
@@ -144,21 +144,21 @@ TEST(Matrix, Mult) {
 
 
 TEST(Matrix, Inverse) {
-  Matrix<double> m(5, 5);
+Matrix<double> m(5, 5);
 
-  for (size_t i = 0; i < m.Rows(); ++i) {
-    for (size_t j = 0; j < m.Rows(); ++j) {
-      m[i][j] = 1 + (i*j)%7;
-    }   
-  }
+for (size_t i = 0; i < m.get_rows(); ++i) {
+for (size_t j = 0; j < m.get_columns(); ++j) {
+m[i][j] = 1 + (i * j) % 7;
+}
+}
 
-  Matrix<double> I(5, 5);
-  for (size_t i = 0; i < m.Rows(); ++i) {
-    I[i][i] = 1.;
-  }
+Matrix<double> I(5, 5);
+for (size_t i = 0; i < m.get_rows(); ++i) {
+I[i][i] = 1.;
+}
 
-  auto i = m.Inverse();
-  EXPECT_EQ(I, i*m);
-  EXPECT_EQ(I, m*i);
-  EXPECT_EQ(m*i, i*m);
+auto i = m.Inverse();
+EXPECT_EQ(I, i * m);
+EXPECT_EQ(I, m * i);
+EXPECT_EQ(m * i, i * m);
 }
