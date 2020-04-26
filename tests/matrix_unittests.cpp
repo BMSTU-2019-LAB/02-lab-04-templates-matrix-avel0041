@@ -2,7 +2,8 @@
 
 #include <gtest/gtest.h>
 
-#include <matrix.hpp>
+//#include <matrix.hpp>
+#include "../include/matrix.hpp"
 
 TEST(Matrix, Init) {
     Matrix<int> m(2, 2);
@@ -97,11 +98,7 @@ TEST(Matrix, SubEmpty) {
 
 TEST(Matrix, Mult) {
     Matrix<char> m(3, 2);
-    /*
-    2 0
-    0 2
-    1 1
-    */
+
     // first colunm
     m[0][0] = 2;
     m[1][0] = 0;
@@ -113,10 +110,7 @@ TEST(Matrix, Mult) {
     m[2][1] = 1;
 
     Matrix<char> c(2, 2);
-    /*
-    1 0
-    1 1
-    */
+
     c[0][0] = 1;
     c[0][1] = 0;
     c[1][0] = 1;
@@ -125,11 +119,7 @@ TEST(Matrix, Mult) {
 
     ASSERT_EQ(s.get_rows(), 3);
     ASSERT_EQ(s.get_columns(), 2);
-    /*
-    2 0
-    2 2
-    2 1
-    */
+
     EXPECT_EQ(s[0][0], 2);
     EXPECT_EQ(s[1][0], 2);
     EXPECT_EQ(s[2][0], 2);
@@ -146,14 +136,14 @@ TEST(Matrix, Mult) {
 TEST(Matrix, Inverse) {
   Matrix<double> m(5, 5);
 
-  for (size_t i = 0; i < m.Rows(); ++i) {
-    for (size_t j = 0; j < m.Rows(); ++j) {
+  for (size_t i = 0; i < m.get_rows(); ++i) {
+    for (size_t j = 0; j < m.get_rows(); ++j) {
       m[i][j] = 1 + (i*j)%7;
-    }   
+    }
   }
 
   Matrix<double> I(5, 5);
-  for (size_t i = 0; i < m.Rows(); ++i) {
+  for (size_t i = 0; i < m.get_rows(); ++i) {
     I[i][i] = 1.;
   }
 
