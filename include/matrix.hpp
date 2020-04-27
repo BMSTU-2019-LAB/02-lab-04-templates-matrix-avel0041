@@ -32,11 +32,11 @@ class Matrix {
     return M[index];
   }
 
-  int get_rows() {
+  size_t get_rows() {
     return row;
   }
 
-  int get_columns() {
+  size_t get_columns() {
     return col;
   }
 
