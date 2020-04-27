@@ -111,7 +111,9 @@ class Matrix {
   {
     for (int i = 0; i < row; i++) {
       for (int j = 0; j < col; j++) {
-        if (abs(M[i][j] - Mat.M[i][j]) > 0.0000000000001) return false;
+        if ((std::is_floating_point<T>::value) && ((abs(M[i][j] - Mat.M[i][j]) > std::numeric_limits<T>::epsilon())){
+          return false;
+        } else if (M[i][j] != Mat.M[i][j]) return false;              
       }
     }
     return true;
