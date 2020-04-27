@@ -108,20 +108,21 @@ class Matrix {
   }
 
   bool operator==(const Matrix<T>& Mat) const
-  {
-    for (int i = 0; i < row; i++) {
-      for (int j = 0; j < col; j++) {
-        if ((std::is_floating_point<T>::value)
-            && ((abs(M[i][j] - Mat.M[i][j])
-                 > std::numeric_limits<T>::epsilon()))){
-          return false;
-        } else {
-          if (M[i][j] != Mat.M[i][j]) return false;
+    {
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (std::is_floating_point<T>::value) {
+                    if ((std::abs(M[i][j] - Mat.M[i][j])
+                         > std::numeric_limits<T>::epsilon())) {
+                        return false;
+                    }
+                }else {
+                    if (M[i][j] != Mat.M[i][j]) return false;
+                    }
+            }
         }
-      }
+        return true;
     }
-    return true;
-  }
   bool operator !=(const Matrix<T>& Mat) const {
     for (int i = 0; i < row; i++) {
       for (int j = 0; j < col; j++) {
