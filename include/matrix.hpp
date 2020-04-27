@@ -2,7 +2,7 @@
 
 #ifndef INCLUDE_MATRIX_HPP_
 #define INCLUDE_MATRIX_HPP_
-
+#include <limits>
 template <class T>
 class Matrix {
   int row;
@@ -111,7 +111,7 @@ class Matrix {
   {
     for (int i = 0; i < row; i++) {
       for (int j = 0; j < col; j++) {
-        if ((std::is_floating_point<T>::value) 
+        if ((std::is_floating_point<T>::value)
             && ((abs(M[i][j] - Mat.M[i][j])
                  > std::numeric_limits<T>::epsilon())){
           return false;
